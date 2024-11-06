@@ -18,7 +18,7 @@ def cargar_lista(fichero):#
 
 
 def agregar_cancion(lista_canciones, nombre, artista, genero):
-    if not buscar_cancion(lista_canciones, nombre): 
+    if buscar_cancion(lista_canciones, nombre) == -1: 
         cancion = {
         "Nombre": nombre,
         "Artista": artista,
@@ -29,18 +29,15 @@ def agregar_cancion(lista_canciones, nombre, artista, genero):
 
 
 def eliminar_cancion(lista_canciones, nombre):
-    for cancion in lista_canciones:
-        if buscar_cancion(lista_canciones, nombre):
-            lista_canciones.remove(cancion)
-            print(nombre + " se ha eliminado con exito")
-            break
+    del lista_canciones[buscar_cancion(lista_canciones, nombre)]
 
 
 def buscar_cancion(lista_canciones, nombre):
     for i,cancion in enumerate (lista_canciones):
         if nombre in cancion["Nombre"]:
-            existeCancion = True
             break
+        else:
+            i = -1
     return i
 
 #buscar enumerate
