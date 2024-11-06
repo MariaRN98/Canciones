@@ -16,43 +16,42 @@ def cargar_lista(fichero):#
     return lista_canciones
 
 
-# 1.2. Agregar Canción a Lista de Música:
-# comprobar si existe
+
 def agregar_cancion(lista_canciones, nombre, artista, genero):
-    #for cancion in lista_canciones:
-        
+    if not buscar_cancion(lista_canciones, nombre): 
+        cancion = {
+        "Nombre": nombre,
+        "Artista": artista,
+        "Genero": genero
+        }
+        lista_canciones.append(cancion)
+        print("Cancion agregada con exito")
 
 
-    cancion = {
-    "Nombre": nombre,
-    "Artista": artista,
-    "Genero": genero
-    }
-    lista_canciones.append(cancion)
-
-
-# # 1.3. Eliminar Canción de Lista de Música
-# comprobar si existe
 def eliminar_cancion(lista_canciones, nombre):
-
     for cancion in lista_canciones:
-        if nombre in cancion["Nombre"]:
+        if buscar_cancion(lista_canciones, nombre):
             lista_canciones.remove(cancion)
             print(nombre + " se ha eliminado con exito")
             break
 
 
-# # 2.1. Contar Canciones en una Lista
+def buscar_cancion(lista_canciones, nombre):
+    for i,cancion in enumerate (lista_canciones):
+        if nombre in cancion["Nombre"]:
+            existeCancion = True
+            break
+    return i
+
+#buscar enumerate
+#for i,cancion in enumerate(lista_canciones) ahora devuelve la posicion en vez del buleano
+
+
 
 def contar_canciones(lista_canciones):
     return len(lista_canciones)
 
 
-
-
-# # 2.2. Buscar Canciones por Artista: (2 puntos) Escribe una función llamada buscar_por_artista que tome un
-# # diccionario de canciones y el nombre de un artista como argumentos, y devuelva una lista de todas las canciones
-# # de ese artista.
 
 def buscar_por_artista(lista_canciones, artista):
     lista_canciones_artista = []
@@ -75,12 +74,6 @@ def ordenar_alfabeticamente(canciones):
 """
 
 
-# Parte 3: Creación de Listas de Reproducción
-
-# # 3.1. Crear Lista de Reproducción Aleatoria: (2 puntos) Escribe una función llamada crear_lista_aleatoria que
-# # tome un diccionario de canciones y un número n como argumentos, y devuelva una lista aleatoria de n canciones
-# # del diccionario de canciones original.
-
 def crear_lista_aleatoria(canciones, n):
     lista_aleatoria = []
 
@@ -92,19 +85,7 @@ def crear_lista_aleatoria(canciones, n):
 #print(crear_lista_aleatoria(dictCanciones, 3))
 
 
-
-# # 3.2. Guardar Lista de Reproducción en Archivo: 
-
-
 def guardar_lista(lista_canciones, nombre_fichero):
     with open(nombre_fichero, "w") as fichero:
         for cancion in lista_canciones:
             fichero.write(f"{cancion["Nombre"]} - {cancion["Artista"]} - {cancion["Genero"]}\n")
-
-def buscar_cancion(lista_canciones, nombre):
-    existeCancion = False
-    for cancion in lista_canciones:
-        if nombre in cancion["Nombre"]:
-            existeCancion = True
-            break
-    return existeCancion
