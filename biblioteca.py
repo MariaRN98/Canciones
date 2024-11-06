@@ -85,7 +85,7 @@ def crear_lista_aleatoria(canciones, n):
 
     return lista_aleatoria
 
-print(crear_lista_aleatoria(dictCanciones, 3))
+#print(crear_lista_aleatoria(dictCanciones, 3))
 
 
 
