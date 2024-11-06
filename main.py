@@ -14,7 +14,7 @@ biblioteca.agregar_cancion(lista_canciones, "Europa VII", "La Oreja de Van Gogh"
 #eliminar cancion
 
 biblioteca.eliminar_cancion(lista_canciones,"Europa VII")
-#print(lista_canciones)
+print(lista_canciones)
 
 #contar
 
@@ -50,4 +50,7 @@ lista_canciones2 = [
     }
 ]
 
-biblioteca.guardar_lista(lista_canciones2, "miplaylist.txt")
+#biblioteca.guardar_lista(lista_canciones2, "miplaylist.txt")
+
+#buscar_cancion
+print(biblioteca.buscar_cancion(lista_canciones, "Yesterday"))

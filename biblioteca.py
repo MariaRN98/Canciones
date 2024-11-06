@@ -17,8 +17,12 @@ def cargar_lista(fichero):#
 
 
 # 1.2. Agregar Canción a Lista de Música:
-
+# comprobar si existe
 def agregar_cancion(lista_canciones, nombre, artista, genero):
+    #for cancion in lista_canciones:
+        
+
+
     cancion = {
     "Nombre": nombre,
     "Artista": artista,
@@ -28,7 +32,7 @@ def agregar_cancion(lista_canciones, nombre, artista, genero):
 
 
 # # 1.3. Eliminar Canción de Lista de Música
-
+# comprobar si existe
 def eliminar_cancion(lista_canciones, nombre):
 
     for cancion in lista_canciones:
@@ -96,3 +100,11 @@ def guardar_lista(lista_canciones, nombre_fichero):
     with open(nombre_fichero, "w") as fichero:
         for cancion in lista_canciones:
             fichero.write(f"{cancion["Nombre"]} - {cancion["Artista"]} - {cancion["Genero"]}\n")
+
+def buscar_cancion(lista_canciones, nombre):
+    existeCancion = False
+    for cancion in lista_canciones:
+        if nombre in cancion["Nombre"]:
+            existeCancion = True
+            break
+    return existeCancion
